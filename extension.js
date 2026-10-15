@@ -2,7 +2,7 @@ import Clutter from 'gi://Clutter';
 import GLib from 'gi://GLib';
 
 import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
-import Main from 'resource:///org/gnome/shell/ui/main.js';
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 // Keep in sync with windowManager.js MINIMIZE_WINDOW_ANIMATION_TIME/MODE
 const ANIM_TIME_MS = 400;
