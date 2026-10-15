@@ -6,18 +6,21 @@
 VS Code、Obsidian、Slack……）恢复最小化时**"窗口先落到偏右下的位置、再跳回
 正确位置"**的毛病——且不牺牲任何动画。
 
-**为什么可以放心用：**
+如果在 GNOME 上从 dock / 任务栏恢复 Chrome、Brave、VS Code 或 Obsidian
+窗口时，窗口先落到偏移位置、再跳回正确位置，这就是修复方案。
 
-- **绿色** —— 单个 ~70 行的 `extension.js`。无配置项、无守护进程、
-  无外部进程、无网络。
-- **无负面** —— 只对"正在恢复动画中、且动画期间真的移动了"的窗口生效。
+## 特性
+
+- **无副作用** —— 只对"正在恢复动画中、且动画期间真的移动了"的窗口生效。
   GTK 应用、最大化窗口完全不受影响（实测 gedit/nautilus 从不触发该路径）。
-- **好退回** —— `gnome-extensions disable unminimize-retarget@wenduof.github.io`
-  加删除目录即完全还原，零残留。
+- **完全可退** —— 单个 ~70 行的 `extension.js`；无配置项、无守护进程、
+  无外部进程、无网络。`gnome-extensions disable
+  unminimize-retarget@wenduof.github.io` 加删除目录即完全还原，零残留。
 - **稳定降级** —— 用的是 shell/mutter 内部接口；若未来 GNOME 改动导致
   扩展报错，只会退回原来的（有毛病的）动画，绝不会破坏桌面。
-- **兼容** —— GNOME 42（Ubuntu 22.04）到 50（Ubuntu 26.04），X11 与
-  Wayland，HiDPI。两个分支，同一逻辑。
+
+兼容 GNOME 42（Ubuntu 22.04）到 50（Ubuntu 26.04），X11 与 Wayland，
+HiDPI。两个分支，同一逻辑。
 
 ## 症状
 
