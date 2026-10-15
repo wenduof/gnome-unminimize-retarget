@@ -13,9 +13,11 @@ collide with existing extensions.
 ## Decision
 
 - uuid: `unminimize-retarget@wenduof.github.io` (same on both branches).
+  EGO review requires the namespace part to be a registered domain or an
+  account form such as `username.github.io`.
 - Display name: "Unminimize Retarget".
 - Repo: `gnome-unminimize-retarget`, kept locally under the maintainer's
-  workspace; GitHub org/user `wenduof` is the intended remote once published.
+  workspace; GitHub user `wenduof` is the intended remote once published.
 
 ## Consequences
 
