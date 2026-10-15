@@ -67,6 +67,9 @@ cp extension.js metadata.json ~/.local/share/gnome-shell/extensions/unminimize-r
 gnome-extensions enable unminimize-retarget@wenduof.github.io
 ```
 
+若 enable 后 `gnome-extensions info` 仍显示 `INITIALIZED`，disable 再
+enable 一次即可——这是 uuid 变更后 shell 的怪癖，不是扩展错误。
+
 ### GNOME 42（Ubuntu 22.04）
 
 用 [`gnome-42`](../../tree/gnome-42) 分支（逻辑相同，classic `imports.*`
@@ -93,6 +96,18 @@ cp extension.js metadata.json ~/.local/share/gnome-shell/extensions/unminimize-r
 gnome-extensions disable unminimize-retarget@wenduof.github.io
 rm -rf ~/.local/share/gnome-shell/extensions/unminimize-retarget@wenduof.github.io
 ```
+
+## 不装扩展的替代缓解
+
+在 Wayland 会话里，Electron 应用可以走原生路径，从而完全绕开这条 X11
+几何路径（也就绕开了这个 bug）：
+
+```bash
+code --ozone-platform=wayland        # 或其他应用的等价参数
+```
+
+这是客户端侧缓解，不是修复（原生 Wayland Electron 另有自己的毛边）；
+本扩展修的是 X11/XWayland 路径本身。
 
 ## 已知限制
 

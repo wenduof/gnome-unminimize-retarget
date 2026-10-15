@@ -3,6 +3,24 @@
 Newest entries at the top. One entry per meaningful step; details of design
 choices live in `docs/decisions/`.
 
+## 2026-10-15 - uuid rename verified end-to-end; review incorporated
+
+- Renamed uuid verified on the maintainer machine (GNOME 42.9, X11, HiDPI):
+  Obsidian/VSCode restore animations visually correct with
+  `unminimize-retarget@wenduof.github.io`.
+- Shell quirk found: after a uuid change, the first `gnome-extensions
+  enable` can leave state at `INITIALIZED` (no error, no journal entry);
+  a `disable` -> `enable` cycle fixes it. Documented in both READMEs.
+- VM (26.04 / GNOME 50.1, software rendering): extension ACTIVE, zero JS
+  errors. Visual test cancelled by decision - the VM has no 3D (Ubuntu
+  gnome-shell disables animations under software rendering anyway).
+- External review adjudicated -> ADR 0006. Adopted: try/catch degrade-once
+  in `_retarget`, `_starts` keyed by window (leak fix), metadata `version`,
+  worktree hazard note, ozone interim option in READMEs. Rejected with
+  reasons: late-reconfigure gate widening, watch teardown.
+- Reviewer corroborated against gnome-shell 46.0 sources: `_unminimizeWindow`
+  unchanged since 42; all three private APIs we use are present.
+
 ## 2026-10-15 - Compliance pass (gjs.guide review guidelines)
 
 - uuid renamed to `unminimize-retarget@wenduof.github.io` (EGO requires a
