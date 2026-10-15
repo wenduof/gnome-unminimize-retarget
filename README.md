@@ -7,22 +7,25 @@ offset down-right, then snaps back"** glitch affecting **Chromium /
 Electron** windows (Chrome, VS Code, Obsidian, Slack, ...) — without
 disabling any animations.
 
-**Why trust it:**
+If Chrome, Brave, VS Code or Obsidian windows land offset and jump into
+place when restored from the dock or taskbar on GNOME, this is the fix.
 
-- **Green** — one ~70-line `extension.js`. No settings, no daemon, no
-  external processes, no network.
+## Properties
+
 - **No side effects** — it only acts on a window that is mid-unminimize
   *and* actually moves during the animation. GTK apps, maximized windows
   and everything else are untouched (verified: gedit/nautilus geometry
   never triggers the code path).
-- **Fully reversible** — `gnome-extensions disable
-  unminimize-retarget@wenduof.github.io` and the directory removal leaves
+- **Fully reversible** — one ~70-line `extension.js`; no settings, no
+  daemon, no external processes, no network. `gnome-extensions disable
+  unminimize-retarget@wenduof.github.io` plus directory removal leaves
   zero state behind.
 - **Degrades gracefully** — it uses private shell internals; if a future
   GNOME changes them, the extension errors out and you simply get the
   original (buggy) animation back, never a broken desktop.
-- **Compatible** — GNOME 42 (Ubuntu 22.04) through 50 (Ubuntu 26.04),
-  X11 and Wayland, HiDPI. Two branches, same logic.
+
+Compatible with GNOME 42 (Ubuntu 22.04) through 50 (Ubuntu 26.04), X11
+and Wayland, HiDPI. Two branches, same logic.
 
 ## Symptom
 
