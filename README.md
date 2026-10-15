@@ -76,6 +76,10 @@ cp extension.js metadata.json ~/.local/share/gnome-shell/extensions/unminimize-r
 gnome-extensions enable unminimize-retarget@wenduof.github.io
 ```
 
+If `gnome-extensions info` still shows `INITIALIZED` after enabling, run
+`disable` then `enable` once - a shell quirk after uuid changes, not an
+extension error.
+
 ### GNOME 42 (Ubuntu 22.04)
 
 Use the [`gnome-42`](../../tree/gnome-42) branch (same logic, classic
@@ -102,6 +106,18 @@ cp extension.js metadata.json ~/.local/share/gnome-shell/extensions/unminimize-r
 gnome-extensions disable unminimize-retarget@wenduof.github.io
 rm -rf ~/.local/share/gnome-shell/extensions/unminimize-retarget@wenduof.github.io
 ```
+
+## Workaround without the extension
+
+On a Wayland session, Electron apps can bypass the whole X11 geometry path
+(and thus the bug) by running natively:
+
+```bash
+code --ozone-platform=wayland        # or the app's equivalent flag
+```
+
+This is a client-side mitigation, not a fix (native Wayland Electron has
+its own rough edges); the extension keeps the X11/XWayland path correct.
 
 ## Known limitations
 

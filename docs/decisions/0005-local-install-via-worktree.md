@@ -23,6 +23,10 @@ Edit only in the main checkout; the installed copy updates via git.
 
 ## Consequences
 
+- **Hazard**: the live worktree is a real git checkout. Never run
+  `git checkout`/`switch`/`clean`/`gc` inside it - they mutate or delete
+  the running extension mid-session. Only fast-forward merges from the
+  main checkout are safe here.
 - The extension directory contains a `.git` file; ExtensionUtils ignores it.
 - Shell restart is still required for code changes to take effect (GJS
   module cache) - worktree only removes copy drift, not the reload step.
