@@ -1,14 +1,11 @@
-import Clutter from 'gi://Clutter';
-import GLib from 'gi://GLib';
-
-import { Extension } from 'resource:///org/gnome/shell/extensions/extension.js';
-import Main from 'resource:///org/gnome/shell/ui/main.js';
+const { GLib, Clutter } = imports.gi;
+const Main = imports.ui.main;
 
 // Keep in sync with windowManager.js MINIMIZE_WINDOW_ANIMATION_TIME/MODE
 const ANIM_TIME_MS = 400;
 const ANIM_MODE = Clutter.AnimationMode.EASE_OUT_EXPO;
 
-export default class UnminimizeRetarget extends Extension {
+class FixUnminimizeOffsetExtension {
   enable() {
     this._watched = new Map(); // MetaWindow -> [positionId, sizeId, unmanagedId]
     this._starts = new Map();  // actor -> monotonic usec of unminimize start
@@ -70,4 +67,8 @@ export default class UnminimizeRetarget extends Extension {
       mode: ANIM_MODE,
     });
   }
+}
+
+function init() {
+  return new FixUnminimizeOffsetExtension();
 }
