@@ -3,5 +3,6 @@
   "name": "Unminimize Retarget",
   "description": "Fixes the down-right offset and snap-back when restoring minimized Chromium/Electron windows: retargets the unminimize animation when the client reconfigures the window mid-animation.",
   "shell-version": ["45", "46", "47", "48", "49", "50"],
-  "url": "https://github.com/wenduof/gnome-unminimize-retarget"
+  "url": "https://github.com/wenduof/gnome-unminimize-retarget",
+  "version": 1
 }
