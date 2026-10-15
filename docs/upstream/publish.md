@@ -23,6 +23,21 @@ Description (short, keyword-bearing):
     restored from the dock: retargets the unminimize animation when the
     client reconfigures the window mid-animation. GNOME 42-50.
 
+## EGO submission checklist (needs EGO account)
+
+1. Upload `unminimize-retarget-<main-sha>.zip` first (metadata `version: 1`,
+   shell 45-50).
+2. Before the second upload, bump the `gnome-42` branch metadata to
+   `version: 2` (EGO requires strictly increasing versions per upload),
+   rebuild its zip, upload (shell 42).
+3. Zip contents must be exactly `extension.js metadata.json LICENSE`
+   (`scripts/make-zip.sh` guarantees this).
+4. gjs-lint no longer exists (removed upstream in gjs 1.82; absent from
+   Ubuntu 22.04 gjs 1.72 and 26.04 gjs 1.88). Rely on the manual
+   gjs.guide review-guidelines checklist (done) + Shexli at review time.
+5. Expect review latency; answer reviewer questions referencing ADR 0001
+   (private-API guards) and ADR 0006 (degrade-once).
+
 ## Push commands (once approved)
 
     # rewrite already done; single identity verified
