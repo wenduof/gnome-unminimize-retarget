@@ -3,6 +3,20 @@
 Newest entries at the top. One entry per meaningful step; details of design
 choices live in `docs/decisions/`.
 
+## 2026-10-15 - published; EGO prep
+
+- Repo pushed to https://github.com/wenduof/gnome-unminimize-retarget
+  (main + gnome-42, description, 13 topics). Public-history privacy
+  re-verified: single noreply identity, zero sensitive strings.
+- dash-to-dock #2085 reply posted (link to repo + ozone mitigation).
+  Drafts for mutter #2317 / Launchpad 824267 / KWin #518357 handed to
+  maintainer (those sites need personal accounts).
+- gjs-lint is gone upstream (removed in gjs 1.82; not in Ubuntu 22.04's
+  1.72 nor 26.04's 1.88). EGO review's Shexli + manual gjs.guide
+  checklist cover the same ground. EGO checklist (incl. the
+  strictly-increasing `version` requirement for the two-branch uploads)
+  added to docs/upstream/publish.md.
+
 ## 2026-10-15 - uuid rename verified end-to-end; review incorporated
 
 - Renamed uuid verified on the maintainer machine (GNOME 42.9, X11, HiDPI):
