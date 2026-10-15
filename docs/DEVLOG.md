@@ -3,6 +3,17 @@
 Newest entries at the top. One entry per meaningful step; details of design
 choices live in `docs/decisions/`.
 
+## 2026-10-15 - Compliance pass (gjs.guide review guidelines)
+
+- uuid renamed to `unminimize-retarget@wenduof.github.io` (EGO requires a
+  domain/account namespace); GitHub remote will be `wenduof/gnome-unminimize-retarget`.
+- Git identity for this repo: `wenduof <19146532+wenduof@users.noreply.github.com>`
+  (keeps employer email out of published history; earlier prototype commits
+  used a local identity and must be squashed/rewritten before first push).
+- Code restyled to GJS 4-space style on both branches.
+- gjs-lint not available on Ubuntu 22.04 (gjs 1.72); run it on a newer
+  distro before EGO submission.
+
 ## 2026-10-15 - docs structure adopted (ADR + DEVLOG + AGENTS.md)
 
 English-first for all repo content; user-facing README gets a separate
