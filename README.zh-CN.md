@@ -19,7 +19,7 @@ VS Code、Obsidian、Slack……）恢复最小化时**"窗口先落到偏右下
 - **稳定降级** —— 用的是 shell/mutter 内部接口；若未来 GNOME 改动导致
   扩展报错，只会退回原来的（有毛病的）动画，绝不会破坏桌面。
 
-兼容 GNOME 42（Ubuntu 22.04）到 50（Ubuntu 26.04），X11 与 Wayland，
+兼容 GNOME 42（Ubuntu 22.04）到 51（Ubuntu 26.10），X11 与 Wayland，
 HiDPI。两个分支，同一逻辑。
 
 ## 症状
@@ -92,6 +92,7 @@ cp extension.js metadata.json ~/.local/share/gnome-shell/extensions/unminimize-r
 | 42.9（Ubuntu 22.04，X11，HiDPI） | `gnome-42` | 已目测验证 |
 | 45–49 | `main` | 预期可用（相关 windowManager 代码未变），未实测 |
 | 50.1（Ubuntu 26.04，Wayland） | `main` | 加载干净；视觉验证待真机 |
+| 51（2026-09-16 稳定版） | `main` | 预期可用（已核对 gnome-shell 51.0 源码），未实测 |
 
 ## 卸载
 

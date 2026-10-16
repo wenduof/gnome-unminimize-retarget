@@ -10,7 +10,7 @@ for user-facing docs and docs/measurements.md for the diagnostic data.
 
 ## Repository layout
 
-- `main` branch: ESM extension, GNOME 45-50 (`shell-version` in metadata.json).
+- `main` branch: ESM extension, GNOME 45-51 (`shell-version` in metadata.json).
 - `gnome-42` branch: classic `imports.*` JS, GNOME 42 only. Branches differ in
   `extension.js` and `metadata.json` ONLY; docs are shared.
 - `docs/decisions/`: ADRs - read these before changing any design choice.
@@ -50,6 +50,8 @@ maximized windows. Do not remove them.
 - GJS style: 4-space indent, single quotes, semicolons (match windowManager.js).
 - No `console.log` in shipped code.
 - `enable()`/`disable()` must be symmetric: every connect has a disconnect.
+- Signal management: `connectObject()`/`disconnectObject()` tracked by the
+  extension instance (the GNOME Shell 42+ idiom).
 
 ## Do not
 

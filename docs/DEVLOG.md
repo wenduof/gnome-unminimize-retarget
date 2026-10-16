@@ -3,6 +3,32 @@
 Newest entries at the top. One entry per meaningful step; details of design
 choices live in `docs/decisions/`.
 
+## 2026-10-16 - EGO review round 1 incorporated; GNOME 51
+
+- EGO reviews by JustPerfection: v1 (gnome-42 zip) rejected - remove the
+  redundant `42.9` entry; "better not to send old shell version support
+  for new extensions". v2 (main zip, 45-50) Active with a request for
+  `connectObject()`/`disconnectObject()`.
+- Both branches refactored to `connectObject()`/`disconnectObject()`
+  tracked by the extension instance (`_watched` is now a `Set`; `_wmConn`
+  gone). Available on 42.9: shell patches `GObject.Object` in
+  `environment.js`. Static checks pass (gjs + node --check); reload
+  verified (State ENABLED, journal clean, restores visually correct).
+- API cross-check 42-51: `connectObject` body in 42.9 and 45.0
+  signalTracker.js is line-identical (ESM syntax aside); 46.0/50.0/51.0
+  `environment.js` still patch `GObject.Object.prototype`; offline gjs
+  1.72.4 test (plain-JS tracker, two emitters) confirms
+  `disconnectObject()` cleanup.
+- Metadata: `version` dropped (deprecated; EGO ignores it - the v2 upload
+  carried `"version": 1` and was numbered 2); gnome-42 shell-version
+  fixed to `["42"]`; main extended to `"51"` (released 2026-09-16;
+  `_unminimizing` / `_unminimizeWindow` / `get_buffer_rect` unchanged in
+  gnome-shell 51.0).
+- Decision (ADR 0007): resubmit the GNOME 42 package once, with a
+  rationale reply on review 76461 (Ubuntu 22.04 LTS until 2027-04,
+  frozen branch, verified environment). If rejected again: GitHub-only,
+  no further attempts. Replies drafted in docs/upstream/review-replies.md.
+
 ## 2026-10-15 - published; EGO prep
 
 - Repo pushed to https://github.com/wenduof/gnome-unminimize-retarget
