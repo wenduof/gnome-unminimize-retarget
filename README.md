@@ -24,7 +24,7 @@ place when restored from the dock or taskbar on GNOME, this is the fix.
   GNOME changes them, the extension errors out and you simply get the
   original (buggy) animation back, never a broken desktop.
 
-Compatible with GNOME 42 (Ubuntu 22.04) through 50 (Ubuntu 26.04), X11
+Compatible with GNOME 42 (Ubuntu 22.04) through 51 (Ubuntu 26.10), X11
 and Wayland, HiDPI. Two branches, same logic.
 
 ## Symptom
@@ -102,6 +102,7 @@ cp extension.js metadata.json ~/.local/share/gnome-shell/extensions/unminimize-r
 | 42.9 (Ubuntu 22.04, X11, HiDPI) | `gnome-42` | visually verified |
 | 45–49 | `main` | expected to work (windowManager unchanged in these areas), not tested |
 | 50.1 (Ubuntu 26.04, Wayland) | `main` | loads clean; visual test pending real hardware |
+| 51 | `main` | expected to work (source-checked against gnome-shell 51.0), not tested |
 
 ## Uninstall
 

@@ -6,7 +6,7 @@ Description:
 
     Fixes the offset-and-jump when restoring minimized Chromium/Electron
     windows (Chrome, VS Code, Obsidian) on GNOME Shell - retargets the
-    unminimize animation instead of disabling it. GNOME 42-50, X11 & Wayland.
+    unminimize animation instead of disabling it. GNOME 42-51, X11 & Wayland.
 
 Topics:
 
@@ -21,22 +21,27 @@ Description (short, keyword-bearing):
 
     Fixes Chrome/VS Code/Obsidian windows landing offset and jumping when
     restored from the dock: retargets the unminimize animation when the
-    client reconfigures the window mid-animation. GNOME 42-50.
+    client reconfigures the window mid-animation. GNOME 42-51.
 
 ## EGO submission checklist (needs EGO account)
 
-1. Upload `unminimize-retarget-<main-sha>.zip` first (metadata `version: 1`,
-   shell 45-50).
-2. Before the second upload, bump the `gnome-42` branch metadata to
-   `version: 2` (EGO requires strictly increasing versions per upload),
-   rebuild its zip, upload (shell 42).
-3. Zip contents must be exactly `extension.js metadata.json LICENSE`
-   (`scripts/make-zip.sh` guarantees this).
+1. Upload `unminimize-retarget-<sha>.zip` per branch
+   (`scripts/make-zip.sh`; contents exactly `extension.js metadata.json
+   LICENSE`). main serves GNOME 45-51, gnome-42 serves GNOME 42.
+2. EGO assigns version numbers by upload order. The metadata `version`
+   key is deprecated and ignored by EGO (the v2 upload carried
+   `"version": 1` and was still numbered 2); it has been removed from
+   both branches. Do not reintroduce it.
+3. Review status (2026-10-16): v2 (main, 45-50) Active; v1 (gnome-42)
+   Rejected - redundant `42.9` entry + advice against old-shell support
+   for new extensions. Plan: re-upload both branches with the corrections
+   as new versions and post the replies from
+   `docs/upstream/review-replies.md`.
 4. gjs-lint no longer exists (removed upstream in gjs 1.82; absent from
    Ubuntu 22.04 gjs 1.72 and 26.04 gjs 1.88). Rely on the manual
    gjs.guide review-guidelines checklist (done) + Shexli at review time.
 5. Expect review latency; answer reviewer questions referencing ADR 0001
-   (private-API guards) and ADR 0006 (degrade-once).
+   and ADR 0007.
 
 ## Push commands (once approved)
 
