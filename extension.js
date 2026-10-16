@@ -7,27 +7,24 @@ const ANIM_MODE = Clutter.AnimationMode.EASE_OUT_EXPO;
 
 class UnminimizeRetargetExtension {
     enable() {
-        this._watched = new Map(); // MetaWindow -> [positionId, sizeId, unmanagedId]
+        this._watched = new Set(); // MetaWindow
         this._starts = new Map();  // MetaWindow -> monotonic usec of unminimize start
 
         // Connected after WindowManager's own handler, so the original
         // animation is already set up when this runs.
-        this._wmConn = global.window_manager.connect('unminimize', (shellwm, actor) => {
+        global.window_manager.connectObject('unminimize', (shellwm, actor) => {
             const win = actor.get_meta_window();
             if (!win)
                 return;
             this._starts.set(win, GLib.get_monotonic_time());
             this._watchWindow(win);
-        });
+        }, this);
     }
 
     disable() {
-        if (this._wmConn) {
-            global.window_manager.disconnect(this._wmConn);
-            this._wmConn = null;
-        }
-        for (const [win, ids] of this._watched)
-            ids.forEach(id => win.disconnect(id));
+        global.window_manager.disconnectObject(this);
+        for (const win of this._watched)
+            win.disconnectObject(this);
         this._watched.clear();
         this._starts.clear();
     }
@@ -35,19 +32,19 @@ class UnminimizeRetargetExtension {
     _watchWindow(win) {
         if (!win || this._watched.has(win))
             return;
-        const positionId = win.connect('position-changed', () => this._retarget(win));
-        const sizeId = win.connect('size-changed', () => this._retarget(win));
-        const unmanagedId = win.connect('unmanaged', () => this._unwatch(win));
-        this._watched.set(win, [positionId, sizeId, unmanagedId]);
+        win.connectObject(
+            'position-changed', () => this._retarget(win),
+            'size-changed', () => this._retarget(win),
+            'unmanaged', () => this._unwatch(win),
+            this);
+        this._watched.add(win);
     }
 
     _unwatch(win) {
-        const ids = this._watched.get(win);
-        if (ids) {
-            ids.forEach(id => win.disconnect(id));
-            this._watched.delete(win);
-            this._starts.delete(win);
-        }
+        if (!this._watched.delete(win))
+            return;
+        win.disconnectObject(this);
+        this._starts.delete(win);
     }
 
     _retarget(win) {

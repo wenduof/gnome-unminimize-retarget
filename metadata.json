@@ -2,10 +2,6 @@
   "uuid": "unminimize-retarget@wenduof.github.io",
   "name": "Unminimize Retarget",
   "description": "Fixes the down-right offset and snap-back when restoring minimized Chromium/Electron windows: retargets the unminimize animation when the client reconfigures the window mid-animation.",
-  "shell-version": [
-    "42",
-    "42.9"
-  ],
-  "url": "https://github.com/wenduof/gnome-unminimize-retarget",
-  "version": 2
+  "shell-version": ["42"],
+  "url": "https://github.com/wenduof/gnome-unminimize-retarget"
 }
