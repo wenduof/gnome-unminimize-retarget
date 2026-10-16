@@ -101,7 +101,7 @@ cp extension.js metadata.json ~/.local/share/gnome-shell/extensions/unminimize-r
 |---|---|---|
 | 42.9 (Ubuntu 22.04, X11, HiDPI) | `gnome-42` | visually verified |
 | 45–49 | `main` | expected to work (windowManager unchanged in these areas), not tested |
-| 50.1 (Ubuntu 26.04, Wayland) | `main` | loads clean; visual test pending real hardware |
+| 50.1 (Ubuntu 26.04, Wayland/XWayland) | `main` | visually verified (repro + fix + stress matrix on real hardware) |
 | 51 | `main` | expected to work (source-checked against gnome-shell 51.0), not tested |
 
 ## Uninstall

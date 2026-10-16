@@ -91,7 +91,7 @@ cp extension.js metadata.json ~/.local/share/gnome-shell/extensions/unminimize-r
 |---|---|---|
 | 42.9（Ubuntu 22.04，X11，HiDPI） | `gnome-42` | 已目测验证 |
 | 45–49 | `main` | 预期可用（相关 windowManager 代码未变），未实测 |
-| 50.1（Ubuntu 26.04，Wayland） | `main` | 加载干净；视觉验证待真机 |
+| 50.1（Ubuntu 26.04，Wayland/XWayland） | `main` | 真机验证通过（复现 + 修复 + 压力测试） |
 | 51（2026-09-16 稳定版） | `main` | 预期可用（已核对 gnome-shell 51.0 源码），未实测 |
 
 ## 卸载

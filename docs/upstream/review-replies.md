@@ -4,6 +4,16 @@ Both reviews are by JustPerfection. Keep replies short; the GNOME 42
 rationale stays reversible (fallback: GitHub-only, see ADR 0007). Post
 each reply only once the corresponding upload is up.
 
+## v3 upload (main) - fix note
+
+> Uploaded v3 of the main package: it carries the
+> `connectObject()`/`disconnectObject()` refactor you asked for, plus a
+> fix for a load failure found during real-hardware verification on
+> Ubuntu 26.04 / GNOME Shell 50.1 - the previous build imported
+> `logError` from `misc/util.js`, which never exported it on 45-51, so
+> module evaluation aborted on every supported shell version. It now
+> uses gjs's global `logError`; no other behaviour changed.
+
 ## Review 76462 - v2 (main 45-50, Active): connectObject
 
 > Thanks - both branches now use `connectObject()`/`disconnectObject()`

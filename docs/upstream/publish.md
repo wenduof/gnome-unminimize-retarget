@@ -34,8 +34,10 @@ Description (short, keyword-bearing):
    both branches. Do not reintroduce it.
 3. Review status (2026-10-16): v2 (main, 45-50) Active; v1 (gnome-42)
    Rejected - redundant `42.9` entry + advice against old-shell support
-   for new extensions. Plan: re-upload both branches with the corrections
-   as new versions and post the replies from
+   for new extensions. Real-hardware verification then exposed a load
+   blocker in the v2 zip (`logError` import, ADR 0008), fixed on main.
+   Next upload: main v3 = connectObject refactor + the fix; gnome-42
+   resubmit unchanged (ADR 0007 plan). Replies in
    `docs/upstream/review-replies.md`.
 4. gjs-lint no longer exists (removed upstream in gjs 1.82; absent from
    Ubuntu 22.04 gjs 1.72 and 26.04 gjs 1.88). Rely on the manual
